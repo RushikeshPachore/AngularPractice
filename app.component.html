@@ -1,0 +1,118 @@
+<div style="text-align: center;">
+  <h1>Parent Component</h1>
+ <!-- //for parent to child  -->
+Parent:<input type="text" #Pcomponent (keyup)="0"> 
+<!-- child component  -->
+  <app-comp1 [Pdata]="Pcomponent.value"></app-comp1> 
+
+
+  <!-- <h2>Using ngIf with else</h2>
+  <input type="radio" name="radio1" (click)="changevalue(true)">True
+  <input type="radio" name="radio1" (click)="changevalue(false)">False
+
+  <div *ngIf="isvalid  else elseblock" >
+    This is valid data
+  </div>
+  <ng-template #elseblock>
+  <div >
+    This is not valid data
+  </div>
+</ng-template> -->
+
+
+<h2>Using ngIf with else and then</h2>
+<input type="radio" name="radio1" (click)="changevalue(true)">True
+<input type="radio" name="radio1" (click)="changevalue(false)">False
+
+<div *ngIf="isvalid; then thenblock; else elseblock" ></div>
+<!-- if valid  then thenblock is executed otherwise elseblock -->
+  <ng-template #thenblock>
+    <div>
+      This is valid thenblock
+    </div>
+  </ng-template>
+  
+  <ng-template #elseblock>
+  <div >
+  This is not valid data
+  </div>
+  </ng-template>
+
+  <!-- ngSwitch -->
+<h2>Ng Switch</h2>
+  Enter your name:<input type="text" #textname (keyup)="0"/>
+  <div [ngSwitch]="textname.value">
+    <div *ngSwitchCase="'Ram'">Hello Ram</div>
+    <div *ngSwitchCase="'sham'">Sham</div>
+    <div *ngSwitchCase="'Aam'"></div>
+    <div *ngSwitchCase="'Raf'"></div>
+    <div *ngSwitchCase="'tar'"></div>
+    <div *ngSwitchCase="'talha'"></div>
+    <div *ngSwitchCase="'anjum'"></div>
+    <div *ngSwitchCase="'bhai'"></div>
+    <div *ngSwitchDefault>Not found</div>
+
+  </div>
+
+<h2>ngFor</h2>
+  <!-- ngFor -->
+ <ul>
+      <li *ngFor="let student of Students; let i=index; let f=first; let l=last; let ev=even; let od= odd">
+        <!-- interolation used here with double curly braces .Comp to view (one way  binding) -->
+        {{i+1}} -{{student.name}} - {{f}} - {{l}} - {{ev}} - {{od}}  
+      </li>
+ </ul>
+
+  <h2>trackby using for</h2>
+  <table  style="text-align: center; margin: 0 auto;">
+    <tr *ngFor="let em of emplyoee; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{em.emplyoeeid }}</td>
+      <td>{{em.name }}</td>
+      <td>{{em.age }}</td>
+      <td>{{em.gender }}</td>
+      <td>{{em.course }}</td>
+    </tr>
+  </table>
+  <br/>
+  <button (click)="getmoreemplyoee()">Get More Students</button>
+
+  <!-- gROUPING -->
+  <h2>grouping with ngfor</h2>
+  <ul *ngFor="let group of Countrydetails">
+    <li>{{group.country}}</li>
+  
+  <ul *ngFor="let person of group.people">
+    <li>{{person.name}}</li>
+  </ul>
+
+</ul>
+
+
+<!-- property binding -->
+FirstName:<span [innerHTML]='firstname'></span> // firstname is from component 
+
+<h2>attribute bindimg</h2>
+<table [attr.border]="bdr" height="200" width="400">
+  <tr>
+    <!-- //data coming from comp, attr keyword, colspan is not keyword -->
+    <td [attr.colspan]="cols">Student detsils</td>  
+  </tr>
+  <tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Class</td>
+  
+  </tr>
+  <tr>
+    <td>001</td>
+    <td>Ajit</td>
+    <td>10th</td>
+  </tr>
+</table>
+
+
+<h2>event binding</h2>
+<button (click)="showData()">Click me </button>
+
+</div>
